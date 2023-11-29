@@ -10,9 +10,9 @@ import cv2, colorsys
 from PIL import Image
 from matplotlib.colors import rgb_to_hsv, hsv_to_rgb
 
-from common.backbones.efficientnet import swish
-from common.backbones.mobilenet_v3 import hard_sigmoid, hard_swish
-from yolo4.models.layers import mish
+#from common.backbones.efficientnet import swish
+#from common.backbones.mobilenet_v3 import hard_sigmoid, hard_swish
+#from yolo4.models.layers import mish
 import tensorflow as tf
 
 
@@ -45,11 +45,11 @@ def get_custom_objects():
     .h5 model is loading or converting
     '''
     custom_objects_dict = {
-        'tf': tf,
-        'swish': swish,
-        'hard_sigmoid': hard_sigmoid,
-        'hard_swish': hard_swish,
-        'mish': mish
+        'tf': tf
+#        'swish': swish,
+#        'hard_sigmoid': hard_sigmoid,
+#        'hard_swish': hard_swish,
+#        'mish': mish
     }
 
     return custom_objects_dict
