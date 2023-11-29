@@ -11,12 +11,12 @@ from tensorflow.keras.models import Model
 from tensorflow.keras.optimizers.legacy import Adam
 
 from yolo2.models.yolo2_darknet import yolo2_body, tiny_yolo2_body
-from yolo2.models.yolo2_mobilenet import yolo2_mobilenet_body, yolo2lite_mobilenet_body, tiny_yolo2_mobilenet_body, tiny_yolo2lite_mobilenet_body
-from yolo2.models.yolo2_mobilenetv2 import yolo2_mobilenetv2_body, yolo2lite_mobilenetv2_body, tiny_yolo2_mobilenetv2_body, tiny_yolo2lite_mobilenetv2_body
-from yolo2.models.yolo2_xception import yolo2_xception_body, yolo2lite_xception_body
-from yolo2.models.yolo2_efficientnet import yolo2_efficientnet_body, yolo2lite_efficientnet_body, tiny_yolo2_efficientnet_body, tiny_yolo2lite_efficientnet_body
-from yolo2.models.yolo2_mobilenetv3_large import yolo2_mobilenetv3large_body, yolo2lite_mobilenetv3large_body, tiny_yolo2_mobilenetv3large_body, tiny_yolo2lite_mobilenetv3large_body
-from yolo2.models.yolo2_mobilenetv3_small import yolo2_mobilenetv3small_body, yolo2lite_mobilenetv3small_body, tiny_yolo2_mobilenetv3small_body, tiny_yolo2lite_mobilenetv3small_body
+#from yolo2.models.yolo2_mobilenet import yolo2_mobilenet_body, yolo2lite_mobilenet_body, tiny_yolo2_mobilenet_body, tiny_yolo2lite_mobilenet_body
+#from yolo2.models.yolo2_mobilenetv2 import yolo2_mobilenetv2_body, yolo2lite_mobilenetv2_body, tiny_yolo2_mobilenetv2_body, tiny_yolo2lite_mobilenetv2_body
+#from yolo2.models.yolo2_xception import yolo2_xception_body, yolo2lite_xception_body
+#from yolo2.models.yolo2_efficientnet import yolo2_efficientnet_body, yolo2lite_efficientnet_body, tiny_yolo2_efficientnet_body, tiny_yolo2lite_efficientnet_body
+#from yolo2.models.yolo2_mobilenetv3_large import yolo2_mobilenetv3large_body, yolo2lite_mobilenetv3large_body, tiny_yolo2_mobilenetv3large_body, tiny_yolo2lite_mobilenetv3large_body
+#from yolo2.models.yolo2_mobilenetv3_small import yolo2_mobilenetv3small_body, yolo2lite_mobilenetv3small_body, tiny_yolo2_mobilenetv3small_body, tiny_yolo2lite_mobilenetv3small_body
 from yolo2.loss import yolo2_loss
 from yolo2.postprocess import batched_yolo2_postprocess
 
@@ -31,39 +31,39 @@ ROOT_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..')
 #
 yolo2_model_map = {
     'yolo2_darknet': [yolo2_body, 60, os.path.join(ROOT_PATH, 'weights', 'darknet19.h5')],
-    'yolo2_mobilenet': [yolo2_mobilenet_body, 87, None],
-    'yolo2_mobilenet_lite': [yolo2lite_mobilenet_body, 87, None],
-    'yolo2_mobilenetv2': [yolo2_mobilenetv2_body, 155, None],
-    'yolo2_mobilenetv2_lite': [yolo2lite_mobilenetv2_body, 155, None],
+#    'yolo2_mobilenet': [yolo2_mobilenet_body, 87, None],
+#    'yolo2_mobilenet_lite': [yolo2lite_mobilenet_body, 87, None],
+#    'yolo2_mobilenetv2': [yolo2_mobilenetv2_body, 155, None],
+#    'yolo2_mobilenetv2_lite': [yolo2lite_mobilenetv2_body, 155, None],
 
-    'yolo2_mobilenetv3large': [yolo2_mobilenetv3large_body, 195, None],
-    'yolo2_mobilenetv3large_lite': [yolo2lite_mobilenetv3large_body, 195, None],
-    'yolo2_mobilenetv3small': [yolo2_mobilenetv3small_body, 166, None],
-    'yolo2_mobilenetv3small_lite': [yolo2lite_mobilenetv3small_body, 166, None],
+#    'yolo2_mobilenetv3large': [yolo2_mobilenetv3large_body, 195, None],
+#    'yolo2_mobilenetv3large_lite': [yolo2lite_mobilenetv3large_body, 195, None],
+#    'yolo2_mobilenetv3small': [yolo2_mobilenetv3small_body, 166, None],
+#    'yolo2_mobilenetv3small_lite': [yolo2lite_mobilenetv3small_body, 166, None],
 
     # NOTE: backbone_length is for EfficientNetB0
     # if change to other efficientnet level, you need to modify it
-    'yolo2_efficientnet': [yolo2_efficientnet_body, 235, None],
-    'yolo2_efficientnet_lite': [yolo2lite_efficientnet_body, 235, None],
+#    'yolo2_efficientnet': [yolo2_efficientnet_body, 235, None],
+#    'yolo2_efficientnet_lite': [yolo2lite_efficientnet_body, 235, None],
 
-    'yolo2_xception': [yolo2_xception_body, 132, None],
-    'yolo2_xception_lite': [yolo2lite_xception_body, 132, None],
+#    'yolo2_xception': [yolo2_xception_body, 132, None],
+#    'yolo2_xception_lite': [yolo2lite_xception_body, 132, None],
 
     'tiny_yolo2_darknet': [tiny_yolo2_body, 0, None],
-    'tiny_yolo2_mobilenet': [tiny_yolo2_mobilenet_body, 87, None],
-    'tiny_yolo2_mobilenet_lite': [tiny_yolo2lite_mobilenet_body, 87, None],
-    'tiny_yolo2_mobilenetv2': [tiny_yolo2_mobilenetv2_body, 155, None],
-    'tiny_yolo2_mobilenetv2_lite': [tiny_yolo2lite_mobilenetv2_body, 155, None],
+#    'tiny_yolo2_mobilenet': [tiny_yolo2_mobilenet_body, 87, None],
+#    'tiny_yolo2_mobilenet_lite': [tiny_yolo2lite_mobilenet_body, 87, None],
+#    'tiny_yolo2_mobilenetv2': [tiny_yolo2_mobilenetv2_body, 155, None],
+#    'tiny_yolo2_mobilenetv2_lite': [tiny_yolo2lite_mobilenetv2_body, 155, None],
 
-    'tiny_yolo2_mobilenetv3large': [tiny_yolo2_mobilenetv3large_body, 195, None],
-    'tiny_yolo2_mobilenetv3large_lite': [tiny_yolo2lite_mobilenetv3large_body, 195, None],
-    'tiny_yolo2_mobilenetv3small': [tiny_yolo2_mobilenetv3small_body, 166, None],
-    'tiny_yolo2_mobilenetv3small_lite': [tiny_yolo2lite_mobilenetv3small_body, 166, None],
+#    'tiny_yolo2_mobilenetv3large': [tiny_yolo2_mobilenetv3large_body, 195, None],
+#    'tiny_yolo2_mobilenetv3large_lite': [tiny_yolo2lite_mobilenetv3large_body, 195, None],
+#    'tiny_yolo2_mobilenetv3small': [tiny_yolo2_mobilenetv3small_body, 166, None],
+#    'tiny_yolo2_mobilenetv3small_lite': [tiny_yolo2lite_mobilenetv3small_body, 166, None],
 
     # NOTE: backbone_length is for EfficientNetB0
     # if change to other efficientnet level, you need to modify it
-    'tiny_yolo2_efficientnet': [tiny_yolo2_efficientnet_body, 235, None],
-    'tiny_yolo2_efficientnet_lite': [tiny_yolo2lite_efficientnet_body, 235, None],
+#    'tiny_yolo2_efficientnet': [tiny_yolo2_efficientnet_body, 235, None],
+#    'tiny_yolo2_efficientnet_lite': [tiny_yolo2lite_efficientnet_body, 235, None],
 }
 
 
