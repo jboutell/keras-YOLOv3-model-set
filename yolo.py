@@ -17,10 +17,10 @@ from tensorflow.keras.layers import Input, Lambda
 from tensorflow_model_optimization.sparsity import keras as sparsity
 from PIL import Image
 
-from yolo5.model import get_yolo5_model, get_yolo5_inference_model
-from yolo5.postprocess_np import yolo5_postprocess_np
-from yolo3.model import get_yolo3_model, get_yolo3_inference_model
-from yolo3.postprocess_np import yolo3_postprocess_np
+#from yolo5.model import get_yolo5_model, get_yolo5_inference_model
+#from yolo5.postprocess_np import yolo5_postprocess_np
+#from yolo3.model import get_yolo3_model, get_yolo3_inference_model
+#from yolo3.postprocess_np import yolo3_postprocess_np
 from yolo2.model import get_yolo2_model, get_yolo2_inference_model
 from yolo2.postprocess_np import yolo2_postprocess_np
 from common.data_utils import preprocess_image
@@ -309,17 +309,20 @@ def detect_video(yolo, video_path, output_path=""):
     cv2.destroyAllWindows()
 
 
-def detect_img(yolo):
-    while True:
-        img = input('Input image filename:')
-        try:
-            image = Image.open(img).convert('RGB')
-        except:
-            print('Open Error! Try again!')
-            continue
-        else:
-            r_image, _, _, _ = yolo.detect_image(image)
-            r_image.show()
+def detect_img(yolo, image_path):
+    image = Image.open(image_path).convert('RGB')
+    r_image, _, _, _ = yolo.detect_image(image)
+    r_image.show()
+    #while True:
+    #    img = input('Input image filename:')
+    #    try:
+    #        image = Image.open(img).convert('RGB')
+    #    except:
+    #        print('Open Error! Try again!')
+    #        continue
+    #    else:
+    #        r_image, _, _, _ = yolo.detect_image(image)
+    #        r_image.show()
 
 
 def main():
@@ -424,9 +427,9 @@ def main():
         Image detection mode, disregard any remaining command line arguments
         """
         print("Image detection mode")
-        if "input" in args:
-            print(" Ignoring remaining command line arguments: " + args.input + "," + args.output)
-        detect_img(yolo)
+        #if "input" in args:
+        #    print(" Ignoring remaining command line arguments: " + args.input + "," + args.output)
+        detect_img(yolo, args.input)
     elif "input" in args:
         detect_video(yolo, args.input, args.output)
     else:
