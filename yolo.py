@@ -312,7 +312,7 @@ def detect_video(yolo, video_path, output_path=""):
 def detect_img(yolo, image_path):
     image = Image.open(image_path).convert('RGB')
     r_image, _, _, _ = yolo.detect_image(image)
-    display(r_image)
+    r_image.save('output.png')
     #while True:
     #    img = input('Input image filename:')
     #    try:
