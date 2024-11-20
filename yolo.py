@@ -65,8 +65,10 @@ class YOLO_np(object):
         self.class_names = get_classes(self.classes_path)
         self.anchors = get_anchors(self.anchors_path)
         self.colors = get_colors(len(self.class_names))
-        K.set_learning_phase(0)
+        #K.set_learning_phase(0)
         self.yolo_model = self._generate_model()
+        self.yolo_model.training = False
+
 
     def _generate_model(self):
         '''to generate the bounding boxes'''
